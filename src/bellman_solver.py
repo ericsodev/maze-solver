@@ -13,7 +13,7 @@ def load_grid(filename='../mazes/default_maze.txt'):
 
 
 gamma = 0.95 # 0 to 1
-threshold = 0.000000001 # > 0
+threshold = 0.0000001 # > 0
 
 def init_values(grid, v):
     for i in range(len(grid)):
@@ -101,10 +101,10 @@ if __name__ == "__main__":
     # iteratively update gamma until a solution is found
     i = 0
     while True:
-        print(f"iteration: {i}\t\t, gamma: {gamma}")
+        print(f"iteration: {i}\t\t, threshold: {threshold}")
         v = solve(grid)
         if not display_solution(grid, v):
-            gamma = gamma * 0.1
+            threshold = threshold / 10
             i += 1
         else:
             break
